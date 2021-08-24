@@ -1,0 +1,21 @@
+#!/bin/bash
+# cd into SystemVerilog or VHDL_SystemVerilog
+cd SystemVerilog
+mds init
+# Setup environment variable @ Remote
+mds env set ROOT_DIR /workspace
+# Run Simulation
+mds exec 'dsim +acc+b -waves waves.vcd ${ROOT_DIR}/design/module_full_adder.v ${ROOT_DIR}/design/carry_lookahead_adder.v ${ROOT_DIR}/testbench/carry_lookahead_adder_directed_tb.v'
+mds artifacts list
+# Point out the Remote Dir != Source Dir
+# DSim artifacts eg: dsim.log dsim.env
+mds artifacts download dsim.log
+cat _downloaded_artifact.dsim.log
+grep PASSED _downloaded_artifact.dsim.log
+
+mds artifacts download waves.vcd
+gtkwave _downloaded_artifact.waves.vcd
+
+# mds workspace destroy
+
+
