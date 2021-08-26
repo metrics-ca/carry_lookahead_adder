@@ -1,0 +1,3 @@
+../design/module_full_adder.v 
+../design/carry_lookahead_adder.v
+../testbench/carry_lookahead_adder_directed_tb.v 
