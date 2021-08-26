@@ -15,8 +15,7 @@ module carry_lookahead_adder_tb ();
   reg clk = 0;
   integer error_cnt = 0;
   
-  // VHDL adder. Setting parameter to VHDL GENERIC
-  carry_lookahead_adder #(.G_WIDTH(WIDTH)) carry_lookahead_inst
+  carry_lookahead_adder #(.WIDTH(WIDTH)) carry_lookahead_inst
     (
      .i_add1(r_ADD_1),
      .i_add2(r_ADD_2),
