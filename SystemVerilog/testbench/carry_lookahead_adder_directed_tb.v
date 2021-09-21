@@ -18,7 +18,7 @@ module carry_lookahead_adder_tb ();
   carry_lookahead_adder #(.WIDTH(WIDTH)) carry_lookahead_inst
     (
      .i_add1(r_ADD_1),
-     .i_add2(r_ADD2_2),
+     .i_add2(r_ADD_2),
      .o_result(w_RESULT)
      );
 
@@ -47,8 +47,8 @@ module carry_lookahead_adder_tb ();
 
   initial
     begin
-      for (int op1 = 0; op1 < 8; op1++) begin
-        for (int op2 = 0; op2 < 8; op2++) begin   
+      for (int op1 = 0; op1 < 2**WIDTH; op1++) begin
+        for (int op2 = 0; op2 < 2**WIDTH; op2++) begin   
           @(negedge clk);   
           r_ADD_1 = op1; 
           r_ADD_2 = op2;
