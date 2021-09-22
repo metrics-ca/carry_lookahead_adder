@@ -64,7 +64,7 @@ module carry_lookahead_adder_tb ();
         $display("Test: PASSED");
       end
       $finish;
-    end
+    // Compile error: missing end
 
 endmodule // carry_lookahead_adder_tb
 
