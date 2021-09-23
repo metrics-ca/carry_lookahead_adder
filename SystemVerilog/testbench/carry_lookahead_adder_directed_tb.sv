@@ -2,6 +2,7 @@
 // File Modified from Nandland.com, 
 // Added Self Checking Capability to the testbench
 ///////////////////////////////////////////////////////////////////////////////
+`include "vunit_defines.svh"
 
 module carry_lookahead_adder_tb ();
 
@@ -43,10 +44,9 @@ module carry_lookahead_adder_tb ();
               error_cnt = error_cnt + 1;
           end
       end
-
-
-  initial
-    begin
+   
+  `TEST_SUITE begin
+    `TEST_CASE("Adder correct behaviour") begin  
       for (int op1 = 0; op1 < 2**WIDTH; op1++) begin
         for (int op2 = 0; op2 < 2**WIDTH; op2++) begin   
           @(negedge clk);   
@@ -56,16 +56,17 @@ module carry_lookahead_adder_tb ();
         end
       end 
       @(negedge clk); 
-      
+    
       if (error_cnt > 0) begin
-          $display("Test: FAILED");
+        $display("Test: FAILED");
       end
-      else  begin
+      else begin
         $display("Test: PASSED");
       end
-      $finish;
+      `CHECK_EQUAL(error_cnt, 0)
     end
-
+  end
+    
 endmodule // carry_lookahead_adder_tb
 
 
