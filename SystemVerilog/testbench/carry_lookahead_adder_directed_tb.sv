@@ -45,7 +45,7 @@ module carry_lookahead_adder_tb ();
             // Inject an X onto the output of the design 
             // Yes, trivial way to trigger an error, but hey
             // TODO: Remove this bug from my code
-            //checker_result = 3'hX;
+            checker_result = 3'hX;
           end // if 
           if(w_RESULT == checker_result) begin
               $display("[%0t ns] [%m/Checker] Info: Sum is correct: r_add1=%0d, r_add2=%0d, result=%0d", $time, r_ADD_1, r_ADD_2, w_RESULT);
