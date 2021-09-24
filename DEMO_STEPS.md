@@ -42,20 +42,20 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
     * Explain the tree and the differences in colouring
 17.	`%> mds artifacts view dsim.log` 
     * Show the browser
-  <img src="images/LogInBrowser.png" width = 600>
+    * <img src="images/LogInBrowser.png" width = 600>
     * Ctrl-F 
     * Search for errors
     * Note the first error occurs at time Xns
-  <img src="images/ErrorSearchInBrowser.png" width = 600>
+    * <img src="images/ErrorSearchInBrowser.png" width = 600>
 18.	`%> mds artifacts view waves.mxd`
     * Show the browser tab
     * Click on the carry_lookahead_adder_tb node
     * Send all signals to the waveform
     *  Zoom full and you should see something like this: 
-    <img src="images/WaveShowingErrorsFullZoom.png" width = 600>
+    *  <img src="images/WaveShowingErrorsFullZoom.png" width = 600>
     * In the time box of the waveform window, enter time X
     * Zoom in to see the X’s on the checker_result signal
-  <img src="images/WaveformWithXZoomedIn.png" width = 600>
+    * <img src="images/WaveformWithXZoomedIn.png" width = 600>
 
 ## Fix the “Bug” and Resimulate
 19.	Go to your favourite IDE/editor
