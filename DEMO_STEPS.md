@@ -75,13 +75,16 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
     * Show that the new _downloaded* files are in grey (local, ignored)
 
 ## Pause/Destroy the Workspace
-25.	`%> mds workspace pause`
+25. `%> mds status`
+    * Show that we are currently in an active workspace
+    * Explain that billing occurs whenever the workspace is in the active state
+26.	`%> mds workspace pause`
     * This is what the user may want to do at the end of their workday
-26.	`%> mds workspace list -r`
+27.	`%> mds workspace list -r`
     * Show that you can still access the workspace, just not perform compute operations
-27.	`%> mds workspace resume`
+28.	`%> mds workspace resume`
     * How you startup in the morning
-28.	`%> mds workspace destroy`
+29.	`%> mds workspace destroy`
     * Removes all source code from the cloud
 
 
