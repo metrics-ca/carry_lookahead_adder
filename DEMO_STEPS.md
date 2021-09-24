@@ -85,6 +85,6 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
 28.	`%> mds workspace resume`
     * How you startup in the morning
 29.	`%> mds workspace destroy`
-    * Removes all source code from the cloud
+    * Removes all source code from the cloud 
 
 
