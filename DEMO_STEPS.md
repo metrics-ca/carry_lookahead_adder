@@ -38,16 +38,16 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
     * Show that no artifacts were stored locally, it’s all in the cloud
   
 ## View Artifacts
-16.	`%> mds artifacts list`
+16.	`%> mds inspect`
     * Explain the tree and the differences in colouring
-17.	`%> mds artifacts view dsim.log` 
+17.	`%> mds artifact view dsim.log` 
     * Show the browser
     * <img src="images/LogInBrowser.png" width = 600>
     * Ctrl-F 
     * Search for errors
     * Note the first error occurs at time Xns
     * <img src="images/ErrorSearchInBrowser.png" width = 600>
-18.	`%> mds artifacts view waves.mxd`
+18.	`%> mds artifact view waves.mxd`
     * Show the browser tab
     * Click on the carry_lookahead_adder_tb node
     * Send all signals to the waveform
@@ -61,21 +61,21 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
 19.	Go to your favourite IDE/editor
     * Open the carry_lookahead_adder_directed_tb.v file and fix the error (search for TODO)
 20.	`%> ./simulate.bsh`
-    * Note the that the simulation now passes
+    * Note: The simulation now passes
     * No need to reload the waveform/log
 
 ## Download Artifacts
-21.	`%> mds artifacts get dsim.log`
+21.	`%> mds artifact get dsim.log`
     * This will result in an error
-22.	`%> mds artifacts -h` 
+22.	`%> mds artifact -h` 
     * Show the printout of the help system
     * (if setup properly) Show mds autocomplete usage. 
-      * Eg: type `mds a`+Tab (complete the command for artifacts) 
-23.	`%> mds artifacts download dsim.log`
+      * Eg: type `mds a<Tab>` (complete the command for artifacts) 
+23.	`%> mds artifact download dsim.log`
     * Explain the _downloaded_artifact prefix
     * Explain that this could be useful for sending via email or whatever
     * Explain that the _downloaded* prefix is ignored by the file sync
-24.	`%> mds artifacts list`  (Could use autocomplete feature here to get to the command)
+24.	`%> mds inspect`  (Could use autocomplete feature here to get to the command, e.g.: `mds in<tab>`)
     * Show that the new _downloaded* files are in grey (local, ignored)
 
 ## Pause/Destroy the Workspace
@@ -84,8 +84,8 @@ b.	This prevents any unwanted warning/error messages when launching the waveform
     * Explain that billing occurs whenever the workspace is in the active state
 26.	`%> mds workspace pause`
     * This is what the user may want to do at the end of their workday
-27.	`%> mds workspace list -r`
-    * Show that you can still access the workspace, just not perform compute operations
+27.	`%> mds inspect`
+    * Show that you can still access the data/artifacts, just not able to perform compute operations
 28.	`%> mds workspace resume`
     * How you startup in the morning
 29.	`%> mds workspace destroy`
