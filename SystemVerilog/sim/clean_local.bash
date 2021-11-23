@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -rf _downloaded_artifact.*
+rm -rf _downloaded*.*
  

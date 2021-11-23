@@ -1,5 +1,5 @@
 #!/bin/bash
-mds exec 'dvhcom -F filelist_VHDL.txt'
-mds exec 'dvlcom -F filelist_SV.txt'
-mds exec 'dsim -genimage image +acc+b -lib work -top carry_lookahead_adder_tb'
-mds exec 'dsim -image image -linebuf -waves waves.vcd'
+aurora execute 'dvhcom -F filelist_VHDL.txt'
+aurora execute 'dvlcom -F filelist_SV.txt'
+aurora execute 'dsim -genimage image +acc+b -lib work -top carry_lookahead_adder_tb'
+aurora execute 'dsim -image image -waves waves.vcd'

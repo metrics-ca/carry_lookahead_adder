@@ -1,2 +1,2 @@
 #!/bin/bash
-mds exec 'dsim -linebuf -F filelist.txt +acc+b -waves waves.mxd'
+aurora execute 'dsim -F filelist.txt +acc+b -waves waves.mxd'
