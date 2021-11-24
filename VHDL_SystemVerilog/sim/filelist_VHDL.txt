@@ -1,0 +1,2 @@
+../design/module_full_adder.vhd
+../design/carry_lookahead_adder.vhd
