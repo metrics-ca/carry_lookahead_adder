@@ -1,0 +1,90 @@
+version: alpha2
+# changes are applied in the next execution
+execution:
+  env_vars:
+    # <VAR>: <value>
+    EXAMPLE_VAR: example_value
+
+# changes are applied in the next dispatch
+dispatch:
+  jobs:
+    hello_world:
+      steps:
+        - echo Hello World
+    run_seed:
+      parameters:
+        seed:
+          type: int
+          default: 1
+      steps:
+        - echo I can run with a seed
+        - cd SystemVerilog/sim
+        - ./run.bash -sv_seed ${ parameters.seed }
+    test_with_artifacts:
+      parameters:
+        seed:
+          type: int
+          default: 1
+      steps:
+        - echo I can keep artifacts
+        - cd SystemVerilog/sim
+        - ./build.bash
+        - ./run.bash -sv_seed ${ parameters.seed }
+      results:
+        storage:
+          run.log: SystemVerilog/sim/dsim.log
+    test_with_analysis:
+      parameters:
+        seed:
+          type: int
+          default: 1
+      steps:
+        - cd SystemVerilog/sim
+        - ./build.bash
+        - ./run.bash -sv_seed ${ parameters.seed }
+        - ./check.bash
+      results:
+        analysis: SystemVerilog/sim/results.json
+        storage:
+          run.log: SystemVerilog/sim/dsim.log
+          waves.vcd: SystemVerilog/sim/waves.vcd
+    test:
+      parameters:
+        seed:
+          type: int
+          default: 1
+        waves:
+          type: enum
+          values : [None, VCD]
+          default: None
+          variable_assignments:
+            None:
+              waves_command: ""
+            VCD:
+              waves_command: -waves waves.vcd
+        language:
+          type: enum
+          values : [SV, VHDL]
+          default: SV
+          variable_assignments:
+            SV:
+              sim_dir: SystemVerilog/sim
+            VHDL:
+              sim_dir: VHDL_SystemVerilog/sim
+      variables:
+        sim_dir:
+          type: string
+          deafult : SystemVerilog/sim
+        waves_command: 
+          type: string
+          default : ""
+      steps:
+        - cd ${ variables.sim_dir }
+        - ./build.bash
+        - ./run.bash -sv_seed ${ parameters.seed } ${ variables.waves_command }
+        - ./check.bash
+      results:
+        analysis: ${ variables.sim_dir }/results.json
+        storage:
+          run.log: ${ variables.sim_dir }/dsim.log
+          waves.vcd: ${ variables.sim_dir }/waves.vcd

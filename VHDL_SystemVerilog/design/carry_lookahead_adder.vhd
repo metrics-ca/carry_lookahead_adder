@@ -55,7 +55,11 @@ begin
   GEN_CLA : for jj in 0 to WIDTH-1 generate
     w_G(jj)   <= i_add1(jj) and i_add2(jj);
     w_P(jj)   <= i_add1(jj) or i_add2(jj);
-    w_C(jj+1) <= w_G(jj) or (w_P(jj) and w_C(jj));
+    --if (jj < WIDTH-1) then
+      w_C(jj+1) <= w_G(jj) or (w_P(jj) and w_C(jj));
+    --else 
+      --w_C(jj+1) <= w_G(jj) or (w_C(jj));
+    --end if;
   end generate GEN_CLA;
     
   w_C(0) <= '0'; -- no carry input

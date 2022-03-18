@@ -1,0 +1,6 @@
+# Sanity
+- job: test
+  parameters:
+    seed: sequence(0,9)
+    language: [SV,VHDL]
+    waves: VCD

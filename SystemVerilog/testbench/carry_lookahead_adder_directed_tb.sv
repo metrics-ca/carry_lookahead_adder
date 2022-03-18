@@ -5,7 +5,7 @@
 
 module carry_lookahead_adder_tb ();
 
-  parameter WIDTH = 3;
+  parameter WIDTH = 16;
 
   reg [WIDTH-1:0] r_ADD_1 = 0;
   reg [WIDTH-1:0] r_ADD_2 = 0;
@@ -44,17 +44,19 @@ module carry_lookahead_adder_tb ();
           end
       end
 
+ integer num_of_operations;
 
   initial
     begin
-      for (int op1 = 0; op1 < 2**WIDTH; op1++) begin
-        for (int op2 = 0; op2 < 2**WIDTH; op2++) begin   
+      num_of_operations = $urandom_range (20, 500);
+      $display ("Running %0d operations", num_of_operations);
+      while (num_of_operations > 0) begin
           @(negedge clk);   
-          r_ADD_1 = op1; 
-          r_ADD_2 = op2;
-          $display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
-        end
-      end 
+          std::randomize(r_ADD_1) with {r_ADD_1 dist { [0:10000] :/ 99, [10000:25000] :/ 1};}; 
+          std::randomize(r_ADD_2) with {r_ADD_2 dist { [0:10000] :/ 99, [10000:25000]  :/ 1};};
+          //$display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
+          num_of_operations = num_of_operations - 1;
+      end
       @(negedge clk); 
       
       if (error_cnt > 0) begin

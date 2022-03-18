@@ -40,7 +40,10 @@ module carry_lookahead_adder
     begin
       assign w_G[jj]   = i_add1[jj] & i_add2[jj];
       assign w_P[jj]   = i_add1[jj] | i_add2[jj];
-      assign w_C[jj+1] = w_G[jj] | (w_P[jj] & w_C[jj]);
+      if (jj < WIDTH-1) 
+        assign w_C[jj+1] = w_G[jj] | (w_P[jj] & w_C[jj]);
+      else
+        assign w_C[jj+1] = w_G[jj] | (w_C[jj]);
     end
   endgenerate
 

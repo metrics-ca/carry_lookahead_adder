@@ -1,0 +1,6 @@
+#Full test list
+- job: test
+  parameters:
+    seed: sequence(0,99)
+    language: [SV,VHDL]
+    #waves: VCD

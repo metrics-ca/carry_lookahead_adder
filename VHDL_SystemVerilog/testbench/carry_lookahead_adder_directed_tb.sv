@@ -5,7 +5,7 @@
 
 module carry_lookahead_adder_tb ();
 
-  parameter WIDTH = 3;
+  parameter WIDTH = 16;
 
   reg [WIDTH-1:0] r_ADD_1 = 0;
   reg [WIDTH-1:0] r_ADD_2 = 0;
@@ -44,26 +44,21 @@ module carry_lookahead_adder_tb ();
           end
       end
 
+ integer num_of_operations;
 
   initial
     begin
-      @(negedge clk);
-      r_ADD_1 = 3'b000;
-      r_ADD_2 = 3'b001;
-      $display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
-      @(negedge clk);
-      r_ADD_1 = 3'b010;
-      r_ADD_2 = 3'b010;
-      $display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
-      @(negedge clk);
-      r_ADD_1 = 3'b101;
-      r_ADD_2 = 3'b110;
-      $display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
-      @(negedge clk);
-      r_ADD_1 = 3'b111;
-      r_ADD_2 = 3'b111;
-      $display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
-      @(negedge clk);
+      num_of_operations = $urandom_range (20, 500);
+      $display ("Running %0d operations", num_of_operations);
+      while (num_of_operations > 0) begin
+          @(negedge clk);   
+          std::randomize(r_ADD_1) with {r_ADD_1 dist { [0:10000] :/ 99, [10000:25000] :/ 1};}; 
+          std::randomize(r_ADD_2) with {r_ADD_2 dist { [0:10000] :/ 99, [10000:25000]  :/ 1};};
+          //$display("[%0t ns] [%m/Stimulus] New values r_add1=%0d, r_add2=%0d", $time, r_ADD_1, r_ADD_2);
+          num_of_operations = num_of_operations - 1;
+      end
+      @(negedge clk); 
+      
       if (error_cnt > 0) begin
           $display("Test: FAILED");
       end

@@ -1,0 +1,11 @@
+- job: run_seed
+  # parameters:
+  #   seed: 50
+
+# - job: test_with_artifacts
+#   parameters:
+#     seed: random_int(2, 0, 100000)
+
+# - job: test_with_analysis
+#   parameters:
+#     seed: sequence(0,9)
