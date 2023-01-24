@@ -8,22 +8,17 @@ Please refer to the DSim User Manual for more information:
 https://support.metrics.ca/hc/en-us/articles/360061975232-User-Guide-DSim-User-Manual
 
 Compile and Run Simulation
+Since this is a VHDL Design + Testbench, we must Analyze separately, while Elaborate and Run can be together or separate.
 Depending on your previous experience and preference, you can choose one of the following methods to achieve the same purpose.
 
-1. 1-step Method: Analyze, Elaborate, and Run in one step.
-> mdc dsim -a '-F filelist.txt +acc+b -waves waves.vcd'
+1. 2-step Method: Analyze separately, Elaborate and Run in one step.
+> mdc dvhcom -a '-F filelist.txt'
+> mdc dsim -a '-top work.carry_lookahead_adder_tb +acc+b -waves waves.vcd'
 
-2. 2-step Method: Analyze and Elaborate in one step, Run in a second step. These are perfect for "compile-once, run many" simulations with random seed flows.
-> mdc dsim -a '-genimage myimage -F filelist.txt +acc+b'
-> mdc dsim -a '-image myimage -waves waves.vcd'
-
-3. 3-step Method: Analyze, Elaborate and Run in 3 seperate steps. These are best suited for VHDL and mixed language flows.
-> mdc dvlcom -a '-F filelist.txt'
+2. 3-step Method: Analyze separately, Elaborate and Run in two steps. These are perfect for "compile-once, run-many" simulations with different random seed flows.
+> mdc dvhcom -a '-F filelist.txt'
 > mdc dsim -a '-genimage myimage -top work.carry_lookahead_adder_tb +acc+b'
 > mdc dsim -a '-image myimage -waves waves.vcd'
-
-Note: Tutorial Walkthrough is using 1-step Method:
-https://support.metrics.ca/hc/en-us/articles/9640702755341-Tutorial-DSim-Cloud-CLI-Walkthrough
 
 Conclusion:
 1. To send a command to DSim Cloud, use:
