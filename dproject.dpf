@@ -1,0 +1,13 @@
+---
+# Note: The contents of this file are automatically generated.
+# Any changes made by hand may be overwritten.
+version: '1'
+workDir: SystemVerilog/sim
+simulations:
+  - name: Run
+    args: '-top work.carry_lookahead_adder_tb -F filelist.txt'
+    debugArgs: +acc+b -waves waves.mxd
+sourceFiles:
+  - path: filelist.txt
+    language: verilog_default
+    fileList: relative-to-workDir
