@@ -1,1 +1,10 @@
 .mdc
+dsim_work
+dsim.env
+dvlcom.env
+dvhcom.env
+metrics_history.db
+metrics.db
+*.vcd
+*.mxd
+*.log
