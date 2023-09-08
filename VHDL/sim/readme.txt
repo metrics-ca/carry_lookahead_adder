@@ -15,7 +15,7 @@ Depending on your previous experience and preference, you can choose one of the 
 > mdc dvhcom -a '-F filelist.txt'
 > mdc dsim -a '-top work.carry_lookahead_adder_tb +acc+b -waves waves.vcd'
 
-2. 3-step Method: Analyze separately, Elaborate and Run in two steps. These are perfect for "compile-once, run-many" simulations with different random seed flows.
+2. 3-step Method: Analyze, Elaborate and Run in 3 separate steps. These are perfect for "compile-once, run-many" simulations with different random seed flows.
 > mdc dvhcom -a '-F filelist.txt'
 > mdc dsim -a '-genimage myimage -top work.carry_lookahead_adder_tb +acc+b'
 > mdc dsim -a '-image myimage -waves waves.vcd'
