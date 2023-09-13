@@ -1,0 +1,90 @@
+name: carry-lookahead-adder
+tasks:
+  - name: compile-sv
+    depends: [sim-vhdl-sv]
+    commands:
+      - dsim -genimage image_sv -F SystemVerilog/sim/filelist.txt +acc+b
+    inputs:
+      working:
+        - name: sim-vhdl-sv.source
+          path: /
+    outputs:
+      artifacts:
+        - name: log-sv
+          path: dsim.log
+      working:
+        - name: image-sv
+          path: dsim_work/image_sv.so
+  - name: sim-vhdl
+    depends: [run-sv-3, sim-vhdl-sv]
+    commands:
+      - dvhcom -F VHDL/sim/filelist.txt
+      - dsim -top work.carry_lookahead_adder_tb +acc+b -waves waves_vhdl.vcd
+    inputs:
+      working:
+        - name: sim-vhdl-sv.source
+          path: /
+    outputs:
+      artifacts:
+        - name: waves-vhdl
+          path: waves_vhdl.vcd
+        - name: log-vhdl
+          path: dsim.log
+  - name: sim-vhdl-sv
+    compute_size: s8
+    mdc_work: VHDL_SystemVerilog/sim/
+    commands:
+      - dvhcom -F filelist_VHDL.txt
+      - dvlcom -F filelist_SV.txt
+      - dsim -top work.carry_lookahead_adder_tb +acc+b -waves waves_vhdl_sv.vcd
+    outputs:
+      working:
+        - name: source
+          path: /
+      artifacts:
+        - name: waves-vhdl-sv
+          path: VHDL_SystemVerilog/sim/waves_vhdl_sv.vcd
+        - name: log-vhdl-sv
+          path: VHDL_SystemVerilog/sim/dsim.log
+  - name: run-sv-1
+    depends: [compile-sv]
+    commands:
+      - dsim -image image_sv -waves waves_sv_1.vcd -sv_seed 1
+    inputs:
+      working:
+        - name: compile-sv.image-sv
+          path: dsim_work/image_sv.so
+    outputs:
+      artifacts:
+        - name: waves-sv-1
+          path: waves_sv_1.vcd
+        - name: log-sv-1
+          path: dsim.log
+  - name: run-sv-2
+    depends: [compile-sv]
+    commands:
+      - dsim -image image_sv -waves waves_sv_2.vcd -sv_seed 2
+    inputs:
+      working:
+        - name: compile-sv.image-sv
+          path: dsim_work/image_sv.so
+    outputs:
+      artifacts:
+        - name: waves-sv-2
+          path: waves_sv_2.vcd
+        - name: log-sv-2
+          path: dsim.log
+  - name: run-sv-3
+    depends: [compile-sv]
+    commands:
+      - dsim -image image_sv -waves waves_sv_3.vcd -sv_seed 3
+    inputs:
+      working:
+        - name: compile-sv.image-sv
+          path: dsim_work/image_sv.so
+    outputs:
+      artifacts:
+        - name: waves-sv-3
+          path: waves_sv_3.vcd
+        - name: log-sv-3
+          path: dsim.log
