@@ -17,7 +17,7 @@ Depending on your previous experience and preference, you can choose one of the 
 > mdc dsim -a '-genimage myimage -F filelist.txt +acc+b'
 > mdc dsim -a '-image myimage -waves waves.vcd'
 
-3. 3-step Method: Analyze, Elaborate and Run in 3 seperate steps. These are best suited for VHDL and mixed language flows.
+3. 3-step Method: Analyze, Elaborate and Run in 3 separate steps. These are best suited for VHDL and mixed language flows.
 > mdc dvlcom -a '-F filelist.txt'
 > mdc dsim -a '-genimage myimage -top work.carry_lookahead_adder_tb +acc+b'
 > mdc dsim -a '-image myimage -waves waves.vcd'
