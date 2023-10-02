@@ -1,0 +1,15 @@
+---
+# Note: The contents of this file are automatically generated.
+# Any changes made by hand may be overwritten.
+version: '1'
+simulations:
+  - name: Sim 1
+    args: '-top work.carry_lookahead_adder_tb'
+    debugArgs: +acc+b -waves waves.mxd
+sourceFiles:
+  - path: filelist.txt
+    language: verilog_default
+    libraryName: ''
+    args: ''
+    fileList: relative-to-file
+librarySearchPaths: []
