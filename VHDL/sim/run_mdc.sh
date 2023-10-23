@@ -4,4 +4,4 @@
 
 # Analyze separately, Elaborate and Run in one step.
 mdc dvhcom -a '-F filelist.txt'
-mdc dsim -a '-top work.carry_lookahead_adder_tb +acc+b -waves waves.vcd'
+mdc dsim -a '-top work.carry_lookahead_adder_tb +acc+b -waves waves.mxd'
