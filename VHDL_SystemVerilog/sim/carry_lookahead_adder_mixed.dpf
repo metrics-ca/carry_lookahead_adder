@@ -1,19 +1,15 @@
 ---
 # Note: The contents of this file are automatically generated.
 # Any changes made by hand may be overwritten.
-version: '1'
+version: '1.0'
+mdc_workspace_dir: ..\..
 simulations:
   - name: Sim 1
-    args: '-top work.carry_lookahead_adder_tb'
-    debugArgs: +acc+b -waves waves.mxd
-sourceFiles:
+    options: '-top work.carry_lookahead_adder_tb +acc+b -waves waves.mxd'
+source_files:
   - path: filelist_VHDL.txt
-    language: vhdl_default
-    libraryName: ''
-    args: ''
-    fileList: relative-to-file
+    language: vhdl
+    file_list: relative-to-file
   - path: ..\testbench\carry_lookahead_adder_directed_tb.sv
-    language: verilog_default
-    libraryName: ''
-    args: ''
-librarySearchPaths: []
+    language: verilog
+library_search_paths: []

@@ -1,15 +1,13 @@
 ---
 # Note: The contents of this file are automatically generated.
 # Any changes made by hand may be overwritten.
-version: '1'
+version: '1.0'
+mdc_workspace_dir: ..\..
 simulations:
   - name: Sim 1
-    args: '-top work.carry_lookahead_adder_tb'
-    debugArgs: +acc+b -waves waves.mxd
-sourceFiles:
+    options: '-top work.carry_lookahead_adder_tb +acc+b -waves waves.mxd'
+source_files:
   - path: filelist.txt
-    language: verilog_default
-    libraryName: ''
-    args: ''
-    fileList: relative-to-file
-librarySearchPaths: []
+    language: verilog
+    file_list: relative-to-file
+library_search_paths: []
