@@ -5,9 +5,12 @@ version: '0.1'
 mdc_workspace_dir: ..\..
 simulations:
   - name: Sim 1
-    options: '-top work.carry_lookahead_adder_tb +acc+b -waves waves.mxd'
+    options: '-top work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd'
 source_files:
-  - path: filelist.txt
+  - path: filelist_VHDL.txt
     language: vhdl
+    library_name: dut
     file_list: relative-to-file
+  - path: ..\testbench\carry_lookahead_adder_directed_tb.vhd
+    language: vhdl
 library_search_paths: []
