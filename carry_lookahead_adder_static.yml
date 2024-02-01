@@ -1,0 +1,20 @@
+name: carry-lookahead-adder-static
+tasks:
+  - name: simulate
+    mdc_work: SystemVerilog/sim
+    commands:
+      - dsim -top work.carry_lookahead_adder_tb -F filelist.txt -run-until $(fanout.time) -l "logs/carry_lookahead_log_$(fanout.time).log"
+    fanout:
+      name: time
+      type: static
+      values:
+        [
+          1000ns,
+          2345ns,
+          5ns,
+          6500ns
+        ]
+    outputs:
+      artifacts:
+        - name: carry_lookahead_log
+          path: SystemVerilog/sim/logs
