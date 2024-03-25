@@ -5,8 +5,28 @@ version: '0.2'
 work_dir: .
 design_root_dir: ..\..
 simulations:
-  - name: Sim 1
+  - name: Default
     options: '-top work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd'
+  - name: WIDTH=8
+    options: >-
+      -defparam WIDTH=8 -top work.carry_lookahead_adder_tb -L dut +acc+b -waves
+      waves.mxd
+  - name: VERBOSITY=0  W=8
+    options: >-
+      -defparam WIDTH=8 -defparam VERBOSITY=0 -top work.carry_lookahead_adder_tb
+      -L dut +acc+b -waves waves.mxd
+  - name: WIDTH=8  NUM_ITERATIONS=100
+    options: >-
+      -defparam WIDTH=8 -defparam NUM_ITERATIONS=100 -top
+      work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd
+  - name: WIDTH=8  NUM_ITERATIONS=100  QUIET
+    options: >-
+      -defparam VERBOSITY=0 -defparam WIDTH=8 -defparam NUM_ITERATIONS=100 -top
+      work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd
+  - name: DefaultwErrors
+    options: >-
+      -defparam VERBOSITY=0 -defparam ADD_ERRORS=1 -top
+      work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd
 source_files:
   - language: verilog
     path: filelist_V.txt
