@@ -8,13 +8,32 @@ use ieee.numeric_std.all;
 use work.all;
 
 entity carry_lookahead_adder_tb is
+  generic (
+    NUM_ITERATIONS : integer := 10;
+    c_WIDTH : integer := 3;
+    CLK_PERIOD : time := 10 ns;
+    ADD_ERRORS : boolean := false;
+    VERBOSITY : boolean := true
+  );
+begin
+  process
+  begin
+    if(VERBOSITY = true) then
+      report "VERBOSITY  True";
+    else
+      report "VERBOSITY  False";
+    end if;
+    report "Width is: " & integer'image(c_WIDTH);
+    report "ADD_ERRORS: " & boolean'image(ADD_ERRORS);
+    wait;
+  end process;
 end carry_lookahead_adder_tb;
 
 architecture behave of carry_lookahead_adder_tb is
 
-  constant NUM_ITERATIONS : integer := 10;
-  constant c_WIDTH : integer := 3;
-  constant CLK_PERIOD : time := 10 ns;
+  --constant NUM_ITERATIONS : integer := 10;
+  --constant c_WIDTH : integer := 3;
+  --constant CLK_PERIOD : time := 10 ns;
 
   signal clk : std_logic := '0';
   signal r_ADD_1  : std_logic_vector(c_WIDTH-1 downto 0) := (others => '0');
@@ -70,20 +89,23 @@ begin
           if (op2 < 2**c_WIDTH) then --for op2 in 0 to 2**c_WIDTH loop
             r_ADD_1 <= std_logic_vector(to_unsigned(op1, r_ADD_1'length));
             r_ADD_2 <= std_logic_vector(to_unsigned(op2, r_ADD_2'length));
-            report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Stimulus] New values: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2);
+            if(VERBOSITY = true) then
+              --report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Stimulus] New values: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2);
+            end if;
             checker_result := add_1 + add_2;
 
             -- Error injection block, just to cause a failure in the log/wave
-            if ((iteration > 0) and (iteration mod (NUM_ITERATIONS/2) = 0)) then
+            if ((iteration > 0) and (iteration mod (NUM_ITERATIONS/2) = 0) and ADD_ERRORS = true) then
               -- Inject a bad value onto the output of the design
               -- Yes, trivial way to trigger an error, but hey
               -- TODO: Remove this bug from my code
-              -- checker_result := -666;
+               checker_result := -111;
             end if;
 
-            if (result = checker_result) then
-              report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Info: Sum is correct: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", result=" & integer'image(result);
-            else
+            if (result = checker_result and VERBOSITY) then
+              --report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Info: Sum is correct: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", result=" & integer'image(result);
+            end if;
+            if (result /= checker_result) then
               report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Error: Sum is incorrect: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", exp_result=" & integer'image(checker_result) & ", result=" & integer'image(result);
               error_cnt <= error_cnt + 1;
             end if;
@@ -114,5 +136,17 @@ begin
       report "Test: PASSED (" & integer'image(error_cnt) & " errors encountered)" severity failure;
     end if;
   end process check;
+
+  process
+  begin
+    if(VERBOSITY = true) then
+      report "VERBOSITY  True";
+    else
+      report "VERBOSITY  False";
+    end if;
+    report "Width is: " & integer'image(c_WIDTH);
+    report "ADD_ERRORS: " & boolean'image(ADD_ERRORS);
+    wait;
+  end process;
 
 end behave;

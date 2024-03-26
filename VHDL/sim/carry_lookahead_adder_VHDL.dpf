@@ -6,7 +6,15 @@ work_dir: .
 design_root_dir: ..\..
 simulations:
   - name: Sim 1
-    options: '-top work.carry_lookahead_adder_tb -L dut +acc+b -waves waves.mxd'
+    options: '-top work.carry_lookahead_adder_tb +acc+b -waves waves.mxd'
+  - name: WIDTH 8
+    options: '-defparam c_width=8 -top work.carry_lookahead_adder_tb'
+  - name: WIDTH 8  QUIET
+    options: >-
+      -defparam VERBOSITY=false -defparam c_WIDTH=8 -top
+      work.carry_lookahead_adder_tb -L dut
+  - name: Errors
+    options: '-defparam ADD_ERRORS=true -top work.carry_lookahead_adder_tb -L dut'
 source_files:
   - language: vhdl
     path: filelist_VHDL.txt
