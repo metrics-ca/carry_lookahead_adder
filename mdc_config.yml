@@ -1,4 +1,4 @@
-# Reference documentation: https://support.metrics.ca/hc/en-us/articles/9905737591565
+# Reference documentation: https://help.metrics.ca/support/solutions/articles/154000141157-dsim-cloud-configuration
 toolchain:
   environment-variables: # Define environment variables
     # HELLO: world

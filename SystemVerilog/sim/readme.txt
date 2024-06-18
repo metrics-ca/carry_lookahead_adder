@@ -1,11 +1,11 @@
 To send a command to DSim Cloud, use
 > mdc <DSim command> -a '[options]'
 See this article for details:
-https://support.metrics.ca/hc/en-us/articles/10166809979789-User-Guide-DSim-Cloud-CLI-Tool-simulator-commands
+https://help.metrics.ca/support/solutions/articles/154000141108-user-guide-dsim-cloud-cli-simulator-commands
 
 DSim supports different ways to compile and run a simulation.
 Please refer to the DSim User Manual for more information:
-https://support.metrics.ca/hc/en-us/articles/360061975232-User-Guide-DSim-User-Manual
+https://help.metrics.ca/support/solutions/articles/154000141193-user-guide-dsim-user-manual
 
 Compile and Run Simulation
 Depending on your previous experience and preference, you can choose one of the following methods to achieve the same purpose.
@@ -23,7 +23,7 @@ Depending on your previous experience and preference, you can choose one of the 
 > mdc dsim -a '-image myimage -waves waves.mxd'
 
 Note: Tutorial Walkthrough is using 1-step Method:
-https://support.metrics.ca/hc/en-us/articles/9640702755341-Tutorial-DSim-Cloud-CLI-Walkthrough
+https://help.metrics.ca/support/solutions/articles/154000141143-tutorial-dsim-cloud-walkthrough
 
 Conclusion:
 1. To send a command to DSim Cloud, use:

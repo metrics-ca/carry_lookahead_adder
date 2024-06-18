@@ -1,11 +1,11 @@
 To send a command to DSim Cloud, use
 > mdc <DSim command> -a '[options]'
 See this article for details:
-https://support.metrics.ca/hc/en-us/articles/10166809979789-User-Guide-DSim-Cloud-CLI-Tool-simulator-commands
+https://help.metrics.ca/support/solutions/articles/154000141108-user-guide-dsim-cloud-cli-simulator-commands
 
 DSim supports different ways to compile and run a simulation.
 Please refer to the DSim User Manual for more information:
-https://support.metrics.ca/hc/en-us/articles/360061975232-User-Guide-DSim-User-Manual
+https://help.metrics.ca/support/solutions/articles/154000141193-user-guide-dsim-user-manual
 
 Compile and Run Simulation
 Since this is a mixed language environment, VHDL Design + Verilog Testbench, we must Analyze separately, while Elaborate and Run can be together or separate.
