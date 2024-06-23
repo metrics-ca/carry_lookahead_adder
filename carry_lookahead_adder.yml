@@ -7,7 +7,7 @@ tasks:
     inputs:
       working:
         - name: sim-vhdl-sv.source
-          path: /
+          path: ./
     outputs:
       artifacts:
         - name: log-sv
@@ -23,7 +23,7 @@ tasks:
     inputs:
       working:
         - name: sim-vhdl-sv.source
-          path: /
+          path: ./
     outputs:
       artifacts:
         - name: waves-vhdl
@@ -40,7 +40,7 @@ tasks:
     outputs:
       working:
         - name: source
-          path: /
+          path: ./
       artifacts:
         - name: waves-vhdl-sv
           path: VHDL_SystemVerilog/sim/waves_vhdl_sv.mxd
