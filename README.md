@@ -1,6 +1,6 @@
 # carry_lookahead_adder
 
-This repository contains a simple RTL design and testbench for a carry-lookahead adder. It is used as an example in Altair® DSim™ tutorials to help new users learn to use our tools.
+This repository contains a simple RTL design and testbench for a carry-lookahead adder. It is used as an example in Altair&reg; DSim&trade; tutorials to help new users learn to use our tools.
 
 The repository hierarchy looks like this:
 
@@ -37,7 +37,7 @@ Within each example:
 
 ### sim
 
-- Contains scripts which encapsulate the commands needed to run a simulation using the Altair® DSim™ tools. 
+- Contains scripts which encapsulate the commands needed to run a simulation using the Altair&reg; DSim&trade; tools. 
 - Simulations should be launched from this directory so that simulation artifacts (logfile, waveform, etc.) will be written here.
 
-For more information about Altair® DSim™ products, please visit our website: <https://altair.com/dsim>
+For more information about Altair&reg; DSim&trade; products, please visit our website: [Altair&reg; DSim&trade;](https://altair.com/dsim)
