@@ -1,13 +1,14 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # dsim_local.sh
-# Shell script to simulate design with Altair® DSim™ on local machine
+# Bash script to simulate design with Altair® DSim™ on local machine
 
 # Set up environment
 WAVE_FILE=waves.mxd
+set -e
 
 # Compile standard libraries
 dlib rm -lib ieee
-dlib map -lib ieee "$STD_LIBS/ieee93"
+dlib map -lib ieee "${STD_LIBS}/ieee93"
 
 # Analyze separately, Elaborate and Run in one step.
 dvlcom -lib dut -F filelist_V.txt
