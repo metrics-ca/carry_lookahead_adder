@@ -4,7 +4,6 @@
 
 # Set up environment
 WAVE_FILE=waves.mxd
-set -e
 
 # Compile standard libraries
 dlib rm -lib ieee
