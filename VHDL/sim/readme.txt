@@ -1,3 +1,5 @@
+Mixed Language Simulation using DSim Cloud
+
 To send a command to DSim Cloud, use
 > mdc <DSim command> -a '[options]'
 See this article for details:
@@ -27,3 +29,6 @@ Conclusion:
 2. There are different ways to compile and run a simulation using DSim. Please refer to the User Manual.
 
 3. In Verilog/SystemVerilog, you need to specify the required library through the '-L <lib>' switch.
+
+To perform mixed language simulation using DSim or DSim Studio:
+https://help.metrics.ca/support/solutions/articles/154000141119-how-to-simulate-mixed-language-designs

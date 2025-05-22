@@ -41,7 +41,7 @@ module carry_lookahead_adder_tb ();
       begin
           checker_result = r_ADD_1 + r_ADD_2;
           // Error injection block, just to cause a failure in the log/wave
-          if ((iteration > 0) && (iteration%`NUM_ITERATIONS/2 == 0)) begin: INJECT_ERROR
+          if ((iteration > 0) && (iteration % (`NUM_ITERATIONS/2) == 0)) begin: INJECT_ERROR
             // Inject an X onto the output of the design
             // Yes, trivial way to trigger an error, but hey
             // TODO: Remove this bug from my code

@@ -60,7 +60,7 @@ begin
 
   -- Testbench
   tb: process(clk)
-    variable checker_result : integer :=0;
+    variable checker_result : unsigned(c_WIDTH downto 0) := (others => '0');
   begin
     if rising_edge(clk) then
 
@@ -71,20 +71,20 @@ begin
             r_ADD_1 <= std_logic_vector(to_unsigned(op1, r_ADD_1'length));
             r_ADD_2 <= std_logic_vector(to_unsigned(op2, r_ADD_2'length));
             report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Stimulus] New values: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2);
-            checker_result := add_1 + add_2;
+            checker_result := to_unsigned(add_1 + add_2, checker_result'length);
 
             -- Error injection block, just to cause a failure in the log/wave
             if ((iteration > 0) and (iteration mod (NUM_ITERATIONS/2) = 0)) then
               -- Inject a bad value onto the output of the design
               -- Yes, trivial way to trigger an error, but hey
               -- TODO: Remove this bug from my code
-              -- checker_result := -666;
+              -- checker_result := (others => 'X');
             end if;
 
-            if (result = checker_result) then
+            if (result = to_integer(checker_result)) then
               report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Info: Sum is correct: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", result=" & integer'image(result);
             else
-              report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Error: Sum is incorrect: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", exp_result=" & integer'image(checker_result) & ", result=" & integer'image(result);
+              report "[" & time'image(now) & "] [carry_lookahead_adder_tb/Checker] Error: Sum is incorrect: r_add1=" & integer'image(add_1) & ", r_add2=" & integer'image(add_2) & ", exp_result=" & integer'image(to_integer(checker_result)) & ", result=" & integer'image(result);
               error_cnt <= error_cnt + 1;
             end if;
             op2 <= op2 + 1;
